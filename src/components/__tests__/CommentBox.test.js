@@ -20,10 +20,22 @@ it('has a text area and a button', () => {
 it('has a text area that users can type in', () => {
   const value = 'new comment';
 
-  wrapped
-    .find('textarea')
-    .simulate('change', { target: { value } });
+  wrapped.find('textarea').simulate('change', { target: { value } });
   wrapped.update();
-  
+
   expect(wrapped.find('textarea').prop('value')).toEqual(value);
+});
+
+it('clears text area after form submission', () => {
+  const value = 'new comment';
+
+  wrapped.find('textarea').simulate('change', { target: { value } });
+  wrapped.update();
+
+  expect(wrapped.find('textarea').prop('value')).toEqual(value);
+
+  wrapped.find('form').simulate('submit');
+  wrapped.update();
+
+  expect(wrapped.find('textarea').prop('value')).toEqual('');
 });
