@@ -7,7 +7,7 @@ import reducers from 'reducers';
 import App from 'components/App';
 
 ReactDOM.render(
-  <Provider store={createStore(reducers, {})w}>
+  <Provider store={createStore(reducers, {})}>
     <App />
   </Provider>,
   document.querySelector('#root')
